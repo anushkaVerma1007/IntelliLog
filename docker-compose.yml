@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  # 1. FastAPI Anomaly Predictor Backend
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: log-anomaly-api:latest
+    container_name: log_anomaly_api
+    ports:
+      - "8000:8000"
+    environment:
+      - PORT=8000
+      - HOST=0.0.0.0
+    command: uvicorn api.api:app --host 0.0.0.0 --port 8000
+    restart: unless-stopped
+
+  # 2. Streamlit DevOps Visualization Dashboard
+  dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: log-anomaly-dashboard:latest
+    container_name: log_anomaly_dashboard
+    ports:
+      - "8501:8501"
+    environment:
+      - STREAMLIT_SERVER_PORT=8501
+      - STREAMLIT_SERVER_ADDRESS=0.0.0.0
+    command: streamlit run app/streamlit_app.py --server.port 8501 --server.address 0.0.0.0
+    depends_on:
+      - api
+    restart: unless-stopped

@@ -1,0 +1,20 @@
+2025-09-25 22:30:01,123 INFO auth-service - User 'alice' logged in successfully from 192.168.1.10
+2025-09-25 22:30:02,456 INFO payment-service: Transaction initiated for user 'alice' amount 55.00
+2025-09-25 22:30:03,789 DEBUG user-database: Query executed: SELECT * FROM users WHERE id=12
+2025-09-25 22:30:04,101 ERROR payment-service - Credit card validation failed for user 'alice'. Reason: Insufficient funds.
+2025-09-25 22:30:05,112 INFO auth-service - User 'bob' logged in successfully from 192.168.1.15
+2025-09-25 22:30:06,213 WARN api-gateway - Request timeout on endpoint /v1/data. Retrying attempt 1...
+2025-09-25 22:30:07,314 INFO payment-service: Transaction initiated for user 'bob' amount 102.50
+2025-09-25 22:30:08,415 INFO payment-service: Transaction completed for user 'bob'
+2025-09-25 22:30:09,516 CRITICAL user-database - Exception: Unable to connect to the database master node.
+2025-09-25 22:30:10,617 INFO auth-service - User 'charlie' logged in successfully from 10.0.0.5
+2025-09-25 22:30:11,135 INFO data-processor - Starting batch job id 7439
+2025-09-25 22:30:12,246 INFO data-processor - Processing record 1000 of 50000
+2025-09-25 22:30:13,357 INFO data-processor - Processing record 2000 of 50000
+2025-09-25 22:30:14,468 WARN user-database - Query latency is high: 1500ms
+2025-09-25 22:30:15,579 ERROR api-gateway - 502 Bad Gateway: Upstream service auth-service is unavailable.
+2025-09-25 22:30:16,680 INFO auth-service - GET /health status 200 OK
+2025-09-25 22:30:17,791 INFO data-processor - Processing record 3000 of 50000
+2025-09-25 22:30:18,902 INFO data-processor - Batch job id 7439 completed successfully.
+25/09/2025 22:30:19 ERROR auth-service - User authentication failed for 'david': invalid credentials provided.
+25/09/2025 22:30:20 INFO payment-service - Refund processed for transaction id 99A83B
